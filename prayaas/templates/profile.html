@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+
+</head>
+
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            
+            <a href="/home/">Home<span>4</span>Paws</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="/home/" class="active">Home</a>
+            <a href="" class="findapet_href">Find a Pet</a>
+            <a href="/rehome/">Rehome Pet</a>
+            {% if 'loggedin_email' in request.session %}
+            <div class="auth-buttons">
+                <a href="/auth/logout/" class="login-btn">Logout</a>
+                <a href="/profile/" class="nav-profile-icon">
+                    <div><i class="fa-solid fa-user"></i></div>
+                </a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="/auth/signin/" class="login-btn">Login</a>
+                <a href="/auth/signup/" class="signup-btn">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- -----------------MESSAGE DIV---------------------- -->
+    {% if messages %}
+    <div id="message_div">
+        <div class="message_cross_wrap">
+            <i class="fa-solid fa-x message_cross" onclick="remove_message_div()"></i><br>
+        </div>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- -------------------------------------------------- -->
+
+    <div class="profile-page">
+
+        <div class="profile-landscape">
+
+            <!-- Profile CArd -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h1 class="profile-name" id="name">{{userobj.name}}</h1>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-item">
+                        <label>Phone Number</label>
+                        <p id="phone">{{userobj.phone}}</p>
+                    </div>
+                    <div class="profile-item">
+                        <label>Email</label>
+                        <p id="email">{{userobj.email}}</p>
+                    </div>
+                    <div class="profile-item">
+                        <label>Address</label>
+                        <p id="address">{{userobj.address}}</p>
+                    </div>
+                    <div class="profile-item">
+                        <label>Country</label>
+                        <p id="country">{{userobj.country}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h1 class="dash-header">Pet Dashboard</h1>
+        <div id="petsPosted">
+            {% if petobj %}
+            {% for p in petobj %}
+            <div class="pet-card">
+                <img src="{{p.petpic.url}}" alt="Pet">
+                <h3>{{p.petname}}</h3>
+                <p>{{p.pettype}} | {{p.petbreed}} | {{p.petage}} Years</p>
+                <a href="/profile/editpost/{{p.id}}"><button class="edit-btn">Edit</button></a>
+                <button class="delete-btn" onclick="post_delete_btn_clicked('{{p.id}}')">Delete</button>
+            </div>
+            {% endfor %}
+            {% else %}
+            <span>No Post Found</span>
+            {% endif %}
+
+
+           
+
+
+        
+
+
+          
+
+       
+
+
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 style="color: #000661;"><i class="fas fa-paw"></i> Home<span style="color: #fff; ">4</span>Paws</h3>
+                <p>Making pet adoption and rehoming simple, safe, and filled with love.</p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+                    <span><i class="fas fa-envelope"></i> help@home4paws.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="" class="findapet_href">Find a Pet</a></li>
+                    <li><a href="/rehome/">Rehome a Pet</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section social">
+                <h3>Stay Connected</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Home4Paws | All rights reserved</p>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>

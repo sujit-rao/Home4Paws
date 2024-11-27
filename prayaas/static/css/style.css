@@ -1,0 +1,997 @@
+:root {
+    --primary-color: #F6B40D;
+    --text-color: #000661;
+    --white: #ffffff;
+    --primary-background: whitesmoke;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--primary-background);
+}
+
+#message_div{
+    border: 1px solid rgb(189, 189, 189);
+    margin: 0px 10px;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 600px;
+    margin-top: 100px;
+    background-color: rgb(229, 229, 229);
+    font-size: 15px;
+}
+.message_cross_wrap{
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.message_cross{
+    color: white;
+    background-color: red;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--white);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-brand img {
+    height: 40px;
+}
+
+.nav-brand a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-brand a span {
+    color: var(--primary-color);
+    font-size: x-large;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.login-btn,
+.signup-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-btn {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.login-btn:hover {
+    background: var(--primary-color);
+}
+
+.auth-buttons a:hover {
+    color: var(--white);
+}
+
+.signup-btn {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-profile-icon{
+    text-decoration: none;
+}
+.nav-profile-icon div{
+    /* border: 1px solid green; */
+    border-radius: 50%;
+    height: 100%;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    background-color: #F6B40D;
+}
+.nav-profile-icon div:hover{
+    border: 2px solid #F6B40D;
+    color: #F6B40D;
+    background-color: white;
+}
+
+
+
+/* Hero Slider Styles */
+.hero-slider {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 74px;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: ease-in;
+}
+
+.slide.active {}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--white);
+    z-index: 2;
+    width: 80%;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    backdrop-filter: blur(0.1px);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cta-button:hover {
+    background: #000661;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--primary-color);
+}
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: var(--white);
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 4rem 5%;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h3 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.footer-section.about p {
+    margin-bottom: 1rem;
+}
+
+.contact span {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section.links ul {
+    list-style: none;
+}
+
+.footer-section.links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section.links a:hover {
+    color: var(--text-color);
+}
+
+.footer-section.social .socials {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section.social .socials a {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section.social .socials a:hover {
+    color: var(--text-color);
+}
+
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 3px solid var(--text-color);
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 1rem;
+        transition: 2s ease-out;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Animations */
+@keyframes fade {
+    from {
+        opacity: 0.4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade {
+    animation: ease-out;
+}
+
+
+
+
+/* Find a pet */
+
+/* Find a pet */
+.FindPets {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.FindPets h1 {
+    padding-top: 20px;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.FindHeader {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15%;
+    padding-right: 10%;
+    align-items: center;
+}
+
+.LocationInput {
+    display: flex;
+}
+
+.LocationInput Input {
+    padding: 3px 10px;
+    border: none;
+    border-left: 3px solid var(--primary-color);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.LocationInput button {
+    padding: 3px 10px;
+    border: none;
+    background: var(--primary-color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.LocationInput button:hover {
+    background: var(--text-color);
+    transition: 0.7s ease;
+
+}
+
+
+
+#pets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    
+    border-radius: 10px;
+}
+
+.pet-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    max-width: 378px;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.pet-card h3 {
+    font-size: 1.2rem;
+    color: #444;
+    margin: 10px 0;
+}
+
+.pet-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.adopt-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adopt-btn:hover {
+    background-color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+
+    .FindHeader {
+        display: block;
+    }
+
+    .FindPets h1 {
+        padding-top: 0;
+    }
+
+    .LocationInput {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .LocationInput button {
+        font-size: 1rem;
+    }
+
+    .LocationInput input {
+        font-size: 1rem;
+    }
+
+}
+
+/* Find a pet end */
+
+/* Find a pet end  */
+
+
+/* Authentication Signup */
+
+
+
+
+.signup-page {
+    font-family: Arial, sans-serif;
+    background-image: url("../images/pet-doodle.jpg");
+    background-size: fit;
+
+    background-position: center;
+    /* Centers the image */
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.form-header p {
+    color: #666;
+}
+
+#signupForm input {
+    width: 100%;
+    padding: 12px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+}
+
+
+#signinForm input {
+    width: 100%;
+    padding: 12px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.input-col {
+    display: flex;
+    border: 2px solid;
+    margin-top: 4px;
+    border-radius: 5px;
+    justify-content: space-between;
+    padding: 0 6px;
+}
+
+.city-country {
+    display: flex;
+    gap: 15px;
+}
+
+.city-country input {
+    flex: 1;
+}
+
+.signup-page button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 530;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--text-color);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Authentication Signup end */
+
+
+/* PEt details */
+
+
+.pet-details-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 120px auto;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+.pet-image {
+    flex: 1;
+    max-width: 50%;
+    padding: 15px;
+    max-height: 839px;
+}
+.pet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.pet-info {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pet-name {
+    color: var(--pedigree-yellow);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--pedigree-yellow);
+    padding-bottom: 10px;
+}
+.pet-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.detail-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+.pet-description {
+    margin-bottom: 20px;
+}
+.contact-section {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+.contact-section h3, p{
+    margin-top: 5px;
+}
+.contact-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 7px;
+    align-items: end;
+}
+.contact-btn:hover {
+    background-color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .pet-details-container {
+        flex-direction: column;
+        margin: 100px 10px;
+    }
+    .pet-image, .pet-info {
+        max-width: 100%;
+    }
+    .pet-details-grid {
+        grid-template-columns: 1fr;
+    }
+    .pet-name {
+        font-size: 2rem;
+    }
+}
+
+
+/* pet details end */
+
+
+/* pet upload */
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.pet-upload{
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-background);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+.upload-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 100px auto;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+.image-upload-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#eeece8;
+    padding: 30px;
+}
+.image-upload-area {
+    width: 100%;
+    border: 2px dashed var(--primary-color);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+.image-upload-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.image-preview {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+}
+.file-name {
+    margin-top: 15px;
+    color: var(--text-color);
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pet-info-section {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    max-width: 540px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline-color: var(--primary-color);
+}
+.upload-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.upload-btn:hover {
+    background-color: var(--text-color);
+}
+@media (max-width: 768px) {
+    .upload-container {
+        flex-direction: column;
+        margin: 100px 10px;
+    }
+
+    .form-group input, 
+.form-group select, 
+.form-group textarea {
+    max-width: 312px;
+   
+}
+
+    .image-upload-section,
+    .pet-info-section {
+        padding: 20px;
+    }
+
+}
+
+
+/* pet upload end */
+
+
+
+
+/* Profile page */
+.profile-page {
+    background-color: var(--primary-background);
+    min-height: 100vh;
+    padding: 5px;
+    
+}
+
+.dash-header{
+    margin-top: 80px;
+    text-align: center;
+}
+
+.profile-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: 2px solid var(--text-color);
+    max-width: 500px;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.profile-landscape{
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.profile-header {
+    background-color: var(--primary-color);
+    padding: 30px;
+    text-align: center;
+}
+
+.profile-name {
+    color: var(--text-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-content {
+    padding: 20px;
+}
+
+.profile-item {
+    background-color: #fff9c4;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.profile-item label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.profile-item p {
+    color: #333;
+    font-size: 16px;
+}
+
+
+#petsPosted {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    
+    border-radius: 10px;
+
+}
+
+.edit-btn {
+    background-color: rgb(247, 234, 234);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.edit-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.delete-btn {
+    background-color: rgb(241, 55, 55);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+
+@media (max-width:768px) {
+    
+    .profile-page{
+        padding: 5px;
+        margin-top: 0px;
+    }
+
+
+
+}
+
+/* Profile page end */

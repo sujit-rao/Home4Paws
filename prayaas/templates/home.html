@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            
+            <a href="/home/">Home<span>4</span>Paws</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="/home/" class="active">Home</a>
+            <a href="" class="findapet_href">Find a Pet</a>
+            <a href="/rehome/">Rehome Pet</a>
+            {% if 'loggedin_email' in request.session %}
+            <div class="auth-buttons">
+                <a href="/auth/logout/" class="login-btn">Logout</a>
+                <a href="/profile/" class="nav-profile-icon">
+                    <div><i class="fa-solid fa-user"></i></div>
+                </a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="/auth/signin/" class="login-btn">Login</a>
+                <a href="/auth/signup/" class="signup-btn">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Hero Section with Slider -->
+    <div class="hero-slider" id="heroSlider">
+        <div class="slide fade">
+            <img src="{%static 'images/DogBg.jpg'%}" alt="Loving dog">
+        </div>
+        <div class="slide fade">
+            <img src="{%static 'images/CatBg.jpg'%}" alt="Cute cat">
+        </div>
+        <div class="slide fade">
+            <img src="{%static 'images/CatandDogBg.jpg'%}" alt="Happy pets">
+        </div>
+        
+        <!-- Slider Navigation -->
+        <div class="slider-nav">
+            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+
+        <div class="hero-content">
+            <h1>Give Them A Place to Call Home</h1>
+            <p>Join our mission to connect loving hearts with pets in need. Every pet deserves a chance at happiness, and every home becomes warmer with a furry friend.</p>
+            <a href="" class="findapet_href"><button class="cta-button">Find Your Pet Now <i class="fas fa-paw"></i></button></a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 style="color: #000661;"><i class="fas fa-paw"></i> Home<span style="color: #fff; ">4</span>Paws</h3>
+                <p>Making pet adoption and rehoming simple, safe, and filled with love.</p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+                    <span><i class="fas fa-envelope"></i> help@home4paws.com</span>
+                </div>
+            </div>
+            
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="" class="findapet_href">Find a Pet</a></li>
+                    <li><a href="/rehome/">Rehome a Pet</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section social">
+                <h3>Stay Connected</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+               
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Home4Paws | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

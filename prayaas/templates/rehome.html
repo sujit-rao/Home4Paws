@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body class="pet-upload">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            
+            <a href="/home/">Home<span>4</span>Paws</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="/home/" class="active">Home</a>
+            <a href="" class="findapet_href">Find a Pet</a>
+            <a href="/rehome/">Rehome Pet</a>
+            {% if 'loggedin_email' in request.session %}
+            <div class="auth-buttons">
+                <a href="/auth/logout/" class="login-btn">Logout</a>
+                <a href="/profile/" class="nav-profile-icon">
+                    <div><i class="fa-solid fa-user"></i></div>
+                </a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="/auth/signin/" class="login-btn">Login</a>
+                <a href="/auth/signup/" class="signup-btn">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- -----------------MESSAGE DIV---------------------- -->
+    {% if messages %}
+    <div id="message_div">
+        <div class="message_cross_wrap">
+            <i class="fa-solid fa-x message_cross" onclick="remove_message_div()"></i><br>
+        </div>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- -------------------------------------------------- -->
+    <form id="petUploadForm" method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="upload-container">
+            <div class="image-upload-section">
+                <div class="image-upload-area">
+
+                    <input type="file" id="petImage" accept="image/*" class="image-upload-input" name="petPic" required>
+                    <span>Click to upload pet image</span>
+                    <img id="imagePreview" class="image-preview" src="#" alt="Pet Image Preview">
+                </div>
+                <div class="file-name" id="fileName">No file selected</div>
+            </div>
+
+            <div class="pet-info-section">
+                <h1>Rehome your pet</h1>
+
+                <div class="form-group">
+                    <label for="petName">Pet Name</label>
+                    <input type="text" id="petName" name="petName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="petType">Pet Type</label>
+                    <input type="text" id="petType" name="petType" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="petBreed">Breed</label>
+                    <input type="text" id="petBreed" name="petBreed" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="petAge">Age</label>
+                    <input type="number" id="petAge" name="petAge" min="0" max="30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="petGender">Gender</label>
+                    <select id="petGender" name="petGender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="petDescription">About the Pet</label>
+                    <textarea id="petDescription" name="petDescription" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="upload-btn">Upload</button>
+
+            </div>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 style="color: #000661;"><i class="fas fa-paw"></i> Home<span style="color: #fff; ">4</span>Paws</h3>
+                <p>Making pet adoption and rehoming simple, safe, and filled with love.</p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+                    <span><i class="fas fa-envelope"></i> help@home4paws.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="" class="findapet_href">Find a Pet</a></li>
+                    <li><a href="/rehome/">Rehome a Pet</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section social">
+                <h3>Stay Connected</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Home4Paws | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

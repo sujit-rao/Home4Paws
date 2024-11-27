@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            
+            <a href="/home/">Home<span>4</span>Paws</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="/home/" class="active">Home</a>
+            <a href="" class="findapet_href">Find a Pet</a>
+            <a href="/rehome/">Rehome Pet</a>
+            {% if 'loggedin_email' in request.session %}
+            <div class="auth-buttons">
+                <a href="/auth/logout/" class="login-btn">Logout</a>
+                <a href="/profile/" class="nav-profile-icon">
+                    <div><i class="fa-solid fa-user"></i></div>
+                </a>
+            </div>
+            {% else %}
+            <div class="auth-buttons">
+                <a href="/auth/signin/" class="login-btn">Login</a>
+                <a href="/auth/signup/" class="signup-btn">Sign Up</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- PEt card detail -->
+    <div class="pet-details-container">
+        <div class="pet-image">
+            <img src="{{ petobj.petpic.url }}" alt="Pet Image">
+        </div>
+        <div class="pet-info">
+            <h1 class="pet-name">{{petobj.petname}}</h1>
+
+            <div class="pet-details-grid">
+                <div class="detail-item">
+                    <strong>Type:</strong> {{petobj.pettype}}
+                </div>
+                <div class="detail-item">
+                    <strong>Breed:</strong> {{petobj.petbreed}}
+                </div>
+                <div class="detail-item">
+                    <strong>Age:</strong> {{petobj.petage}} years
+                </div>
+                <div class="detail-item">
+                    <strong>Gender:</strong> {{petobj.petgender}}
+                </div>
+            </div>
+
+            <div class="pet-description">
+                <h3>About Rocky</h3>
+                <p>{{petobj.petdesc}}</p>
+            </div>
+
+            <div class="contact-section">
+                <h3>Interested in Adopting?</h3>
+                <p>Contact our shelter to meet {{ petobj.petname }}:</p>
+                <p><i class="fa-solid fa-user" style="color: #000661;"></i> Owner: {{ userobj.name }}</p>
+                <p><i class="fa-solid fa-phone" style="color: #000661;"></i> Phone: <a href="tel:{{ userobj.phone }}">{{ userobj.phone }} </a></p>
+
+                <p><i class="fa-solid fa-envelope" style="color: #000661;"></i> Email: <a
+                        href="mailto:{{ userobj.email }}">{{ userobj.email }}</a></p>
+                <!-- <p><a href="https://wa.me/(555)
+                        123-4567" id="whatsappLink" target="_blank">
+                        <i class="fa-brands fa-square-whatsapp" style="color: #000661;""></i> Message on Whatsapp
+                </a></p> -->
+
+                <p><i class="fa-solid fa-location-pin"></i> Address: {{ userobj.address }}, {{ userobj.country }}</p>
+                <!-- <button class=" contact-btn">Contact Shelter</button> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 style="color: #000661;"><i class="fas fa-paw"></i> Home<span style="color: #fff; ">4</span>Paws</h3>
+                <p>Making pet adoption and rehoming simple, safe, and filled with love.</p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> +1 234 567 890</span>
+                    <span><i class="fas fa-envelope"></i> help@home4paws.com</span>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="" class="findapet_href">Find a Pet</a></li>
+                    <li><a href="/rehome/">Rehome a Pet</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section social">
+                <h3>Stay Connected</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Home4Paws | All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

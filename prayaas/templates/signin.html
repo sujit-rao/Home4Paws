@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="signup-page">
+        <div class="container">
+            <div class="signin-form">
+                <div class="form-header">
+                    <h1 style="color:#000661;">Home<span style=" color: #F6B40D; font-size: 40px ;">4</span>Paws</h1>
+                    <p>Login to your account</p>
+                </div>
+
+                <form id="signinForm" method="POST">
+                    {% csrf_token %}
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-envelope" style="color: #000661;"></i></span>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-lock" style="color: #000661;"></i></span>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+
+                    <button type="submit">Login</button>
+
+                    <div class="login-link">
+                        <p>Don't have an account? <a href="/auth/signup/">Create account</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

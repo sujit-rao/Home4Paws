@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/pawsIcon.png' %}" />
+    <title>Home4Paws</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="signup-page">
+        <div class="container">
+            <div class="signup-form">
+                <div class="form-header">
+                    <h1 style="color:#000661;">Home<span style=" color: #F6B40D; font-size: 40px ;">4</span>Paws</h1>
+                    <p>Create your account</p>
+                </div>
+
+                <form id="signupForm" method="POST">
+                    {% csrf_token %}
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-user" style="color: #000661;"></i></span>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-envelope" style="color: #000661;"></i></span>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-lock" style="color: #000661;"></i></span>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-phone" style="color: #000661;"></i></span>
+                        <input type="tel" name="phoneNumber" placeholder="Phone" required>
+                    </div>
+                    <div class="input-col">
+                        <span class="icon"><i class="fa-solid fa-location-dot" style="color: #000661;"></i></span>
+                        <input type="text" name="city" placeholder="City" required>
+                    </div>
+                    <div class="city-country">
+                        <div class="input-col">
+                            <span class="icon"><i class="fa-solid fa-location-dot" style="color: #000661;"></i></span>
+                            <input type="text" name="address" placeholder="Address" required>
+                        </div>
+
+                        <div class="input-col">
+                            <span class="icon"><i class="fa-solid fa-earth-europe" style="color: #000661;"></i></span>
+                            <input type="text" name="country" placeholder="Country" required>
+                        </div>
+                    </div>
+
+                    <button type="submit">Sign Up</button>
+
+                    <div class="login-link">
+                        <p>Already have an account? <a href="/auth/signin/">Log In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
