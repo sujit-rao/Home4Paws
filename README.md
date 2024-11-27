@@ -1,3 +1,5 @@
+<h1 align="center">Home4Paws</h1>
+
 Home4Paws
 Project Overview
 Home4Paws is a web platform designed to facilitate pet adoptions by connecting potential pet owners with animals seeking loving homes. Built using Django, the application provides a user-friendly interface for creating pet profiles, managing listings, and searching for potential pets.
